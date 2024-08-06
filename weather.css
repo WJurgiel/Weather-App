@@ -10,30 +10,38 @@
     --van-dyke: hsla(341, 12%, 26%, 1);
     --dark-cyan: hsla(180, 83%, 32%, 1);
     --caribbean-current: hsla(181, 73%, 26%, 1);
+
+    --humidity-width: 3.0rem;
 }
+/*
+    TODO
+    -divide css into bunch of different files - it's becoming really hard to read
+    -highliting progress and track on slider  on hover for mozzilla and chromium
+*/
 body{
     background-color: var(--platinum);
     display: flex;
     flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
 }
 /*SEARCH CONTAINER PROPERTIES*/
-#search-container{
+.search-container{
     display:flex;
     justify-content: center;
     margin: auto;
     margin-top: 3vh;
 }
-#search-container #search{
+.search-container #search{
     background-color: lightcoral;
     color: white;
     font-size: 2rem;
     border-radius: 10px;
     border: none;
     position: relative;
-    width: 30vw;
+    width: 40vw;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.45);
 }
-#search-container #pin-button{
+.search-container #pin-button{
     background-color: var(--tea-rose);
     border-radius: 10px;
     position: absolute;
@@ -44,7 +52,7 @@ body{
 }
 
 
-#search-container #search-button{
+.search-container #search-button{
     margin-left: 10px;
     font-size: 1.5em;
     color: white;
@@ -55,60 +63,128 @@ body{
     padding: 0px 20px;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.45);
 }
-#search-container #search-button:hover{
+.search-container #search-button:hover{
     background-color: var(--search-button-hover);
 }
-#search-container #search-button:active{
+.search-container #search-button:active{
     background-color: var(--search-button-active);
 }
 /*----------------------------------------------------------*/
 
 /*selected-weather-container*/
-#selected-weather-container{
+.selected-weather-container{
     display: flex;
     width: 100hv;
     justify-content: center;
-    border: 1px solid blue;
+    /* border: 1px solid blue; */
     margin-top: 5vh;
 }
-#humidity-sub{
-    
+.selected-weather-container #humidity-sub{
+    /* border:1px solid; */
+    display:grid;
+    justify-content: right;
+    align-items: center;
+    margin-right: 2rem;
 }
-#day-humidity-indicator{
+#day-humidity-indicator, #day-humidity-value{
+    grid-column: 1;
+    grid-row: 1;
+}
+.selected-weather-container #day-humidity-indicator{
+    
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
-   
+    height: 90%;
+    /* width: 3.8rem; */
     
+    /* box-shadow: 5px 5px 0px 4px rgba(0, 0, 0, 50%); */
     
 }
 #day-humidity-indicator::-webkit-slider-runnable-track{
     background-color: var(--light-coral);
     border:none;
+    width: var(--humidity-width);
+    
 }
 #day-humidity-indicator::-webkit-slider-thumb{
     background-color: var(--humidity-indicator);
     border:none;
+    width: var(--humidity-width);
 }
 #day-humidity-indicator::-moz-range-track{
     background-color: var(--light-coral);
-    width: 5rem;
+    width: var(--humidity-width);
     border-radius: 5px;
     border:none;
+    box-shadow: 5px 5px 4px 3px rgba(0, 0, 0, 50%);
+}
+
+#day-humidity-indicator::-moz-range-track:hover{
+    background-color: var(--search-button-active);
 }
 #day-humidity-indicator::-moz-range-thumb{
     background-color: var(--humidity-indicator);
-    width:5rem;
-    height: 0.1rem;
+    width: var(--humidity-width);
+    height: 0rem;
     border:none;
+    appearance: none;
 }
 #day-humidity-indicator::-moz-range-progress{
-    width: 5rem;
+    width: var(--humidity-width);
     background-color: var(--humidity-indicator);
+    border-radius: 5px;
 }
-#main-card-sub{
-    border: 1px solid;
+#day-humidity-indicator::-moz-range-progress:hover{
+    background-color:hsla(219,61%,80%, 1); ;
 }
-#details-sub{
-    border: 1px solid;
+#day-humidity-value{
+    font-size: 1.5rem;
+    position:relative;
+    justify-content: center;
+    color: white;
+}
+.main-card-sub{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-coral);
+    width: 60vh;
+    height: 41vh;
+    border-radius: 10px;
+    /* box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.568); */
+    box-shadow: 5px 5px 4px 3px rgba(0, 0, 0, 42%);
+    /* border: 1px solid; */
+}
+.main-card-sub h1{
+    font-size: 4rem;
+    /* width: fit-content; */
+    /* height: fit-content; */
+    color: var(--mindaro);
+    font-weight: bold;
+    /* margin-top: 0px;    */
+}
+.main-card-sub #icon{
+    font-size: 5rem;
+}
+.main-card-sub #temperature{
+    font-size: 3rem;
+    color: var(--mindaro);
+    font-weight: bold;
+}
+.details-sub{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1rem;
+}
+.details-sub #sunrise{
+    /* border: 1px solid; */
+    width: 15rem;
+    padding: 5px;
+}
+.details-sub #sunrise:hover{
+    width: 17rem;
 }

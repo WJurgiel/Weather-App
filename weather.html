@@ -7,19 +7,30 @@
     <link rel="stylesheet" href="weather.css">
 </head>
 <body>
-    <form id="search-container">
+    <form class="search-container">
         <div>
             <input id="search" placeholder="Enter your city">
             <img id="pin-button" src="localize-button.png" width="32" height="32" onclick="locate()">
         </div>
         <button id="search-button" type="submit">Search</button>
     </form>
-    <div id="selected-weather-container">
+    <div class="selected-weather-container">
         <div id="humidity-sub">
             <input id="day-humidity-indicator" type="range" min="0" max="100" orient="vertical">
+            <label for="day-humidity-indicator" id="day-humidity-value">1.0</label>
         </div>
-        <div id="main-card-sub"> fg </div>
-        <div id="details-sub">sadas</div>
+        <div class="main-card-sub">
+            <h1>Suwałki</h1>
+            <p id="icon">☀</p>
+            <p id="temperature">22°C</p>
+            <p id="date">Wednesday 07.06.2024</p>
+        </div>
+        <div class="details-sub">
+            <img src="sub-day-sunrise-container.png" id="sunrise">
+            <img src="sub-day-sunset-container.png" id="sunrise">
+            <img src="sub-day-rain-container.png" id="sunrise">
+            <img src="sub-day-wind-container.png" id="sunrise">
+        </div>
     </div>
     <script src="weather.js"></script>
 </body>
