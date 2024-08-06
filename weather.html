@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+<body>
+    <form id="search-container">
+        <div>
+            <input id="search" placeholder="Enter your city">
+            <img id="pin-button" src="localize-button.png" width="32" height="32" onclick="locate()">
+        </div>
+        <button id="search-button" type="submit">Search</button>
+    </form>
+    <div id="selected-weather-container">
+        <div id="humidity-sub">
+            <input id="day-humidity-indicator" type="range" min="0" max="100" orient="vertical">
+        </div>
+        <div id="main-card-sub"> fg </div>
+        <div id="details-sub">sadas</div>
+    </div>
+    <script src="weather.js"></script>
+</body>
+</html>

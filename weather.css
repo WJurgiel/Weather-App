@@ -1,0 +1,114 @@
+:root{
+    --platinum: hsla(0, 0%, 90%, 1);
+    --tea-rose: hsla(0, 61%, 85%, 1);
+    --light-coral: hsla(0, 60%, 75%, 1);
+    --search-button: hsla(0, 80%, 68%, 1);
+    --search-button-hover: hsla(0, 80%, 73%, 1);
+    --search-button-active: hsla(0, 80%, 78%, 1);
+    --humidity-indicator: hsla(219,61%,75%, 1);
+    --mindaro: hsla(81, 64%, 75%, 1);
+    --van-dyke: hsla(341, 12%, 26%, 1);
+    --dark-cyan: hsla(180, 83%, 32%, 1);
+    --caribbean-current: hsla(181, 73%, 26%, 1);
+}
+body{
+    background-color: var(--platinum);
+    display: flex;
+    flex-direction: column;
+}
+/*SEARCH CONTAINER PROPERTIES*/
+#search-container{
+    display:flex;
+    justify-content: center;
+    margin: auto;
+    margin-top: 3vh;
+}
+#search-container #search{
+    background-color: lightcoral;
+    color: white;
+    font-size: 2rem;
+    border-radius: 10px;
+    border: none;
+    position: relative;
+    width: 30vw;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.45);
+}
+#search-container #pin-button{
+    background-color: var(--tea-rose);
+    border-radius: 10px;
+    position: absolute;
+    
+    /* padding: 2px; */
+    margin-left: -40px;
+    margin-top: 5px;
+}
+
+
+#search-container #search-button{
+    margin-left: 10px;
+    font-size: 1.5em;
+    color: white;
+    background-color: var(--search-button);
+    border: none;
+    width: 100%;
+    border-radius: 10px;
+    padding: 0px 20px;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.45);
+}
+#search-container #search-button:hover{
+    background-color: var(--search-button-hover);
+}
+#search-container #search-button:active{
+    background-color: var(--search-button-active);
+}
+/*----------------------------------------------------------*/
+
+/*selected-weather-container*/
+#selected-weather-container{
+    display: flex;
+    width: 100hv;
+    justify-content: center;
+    border: 1px solid blue;
+    margin-top: 5vh;
+}
+#humidity-sub{
+    
+}
+#day-humidity-indicator{
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+   
+    
+    
+}
+#day-humidity-indicator::-webkit-slider-runnable-track{
+    background-color: var(--light-coral);
+    border:none;
+}
+#day-humidity-indicator::-webkit-slider-thumb{
+    background-color: var(--humidity-indicator);
+    border:none;
+}
+#day-humidity-indicator::-moz-range-track{
+    background-color: var(--light-coral);
+    width: 5rem;
+    border-radius: 5px;
+    border:none;
+}
+#day-humidity-indicator::-moz-range-thumb{
+    background-color: var(--humidity-indicator);
+    width:5rem;
+    height: 0.1rem;
+    border:none;
+}
+#day-humidity-indicator::-moz-range-progress{
+    width: 5rem;
+    background-color: var(--humidity-indicator);
+}
+#main-card-sub{
+    border: 1px solid;
+}
+#details-sub{
+    border: 1px solid;
+}
