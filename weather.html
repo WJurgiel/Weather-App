@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokemon</title>
     <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href=""
 </head>
 <body>
     <form class="search-container">
@@ -20,16 +21,73 @@
             <label for="day-humidity-indicator" id="day-humidity-value">1.0</label>
         </div>
         <div class="main-card-sub">
-            <h1>Suwałki</h1>
-            <p id="icon">☀</p>
+            <h1>Wrocław</h1>
+            <img id="icon" src="cloud-sun.png" width="128" height="128">
             <p id="temperature">22°C</p>
             <p id="date">Wednesday 07.06.2024</p>
         </div>
         <div class="details-sub">
-            <img src="sub-day-sunrise-container.png" id="sunrise">
-            <img src="sub-day-sunset-container.png" id="sunrise">
-            <img src="sub-day-rain-container.png" id="sunrise">
-            <img src="sub-day-wind-container.png" id="sunrise">
+            <div class="details">
+                <img src="sub-day-sunrise-container.png"  id="sunrise">
+                <label for="sunrise">4:52</label>
+            </div>
+            <div class="details">
+                <img src="sub-day-sunset-container.png" id="sunset">
+                <label for="sunset">20:18</label>
+            </div>
+            <div class="details">
+                <img src="sub-day-rain-container.png"  id="rain">
+                <label for="rain">100%</label>
+            </div>
+           <div class="details">
+                <img src="sub-day-wind-container.png"  id="wind">
+                <label for="wind">99km</label>
+           </div>
+            
+        </div>
+    </div>
+    <div class="days-weather-container">
+        <div class="active-button day-button " id="day-0">
+            <h1 id="day">WED</h1>
+            <img id="icon" src="sun.png" width="64" height="64">
+            <p id="day-temp">23°C</p> 
+            <p id="night-temp">14°C</p>
+        </div>
+        <div class="day-button" id="day-1">
+            <h1 id="day">WED</h1>
+            <img id="icon" src="sun.png" width="64" height="64">
+            <p id="day-temp">23°C</p> 
+            <p id="night-temp">14°C</p>
+        </div>
+        <div class="day-button" id="day-2">
+            <h1 id="day">WED</h1>
+            <img id="icon" src="sun.png" width="64" height="64">
+            <p id="day-temp">23°C</p> 
+            <p id="night-temp">14°C</p>
+        </div>
+        <div class="day-button" id="day-3">
+            <h1 id="day">WED</h1>
+            <img id="icon" src="sun.png" width="64" height="64">
+            <p id="day-temp">23°C</p> 
+            <p id="night-temp">14°C</p>
+        </div>
+        <div class="day-button" id="day-4">
+            <h1 id="day">WED</h1>
+            <img id="icon" src="sun.png" width="64" height="64">
+            <p id="day-temp">23°C</p> 
+            <p id="night-temp">14°C</p>
+        </div>
+        <div class="day-button" id="day-5">
+            <h1 id="day">WED</h1>
+            <img id="icon" src="sun.png" width="64" height="64">
+            <p id="day-temp">23°C</p> 
+            <p id="night-temp">14°C</p>
+        </div>
+        <div class="day-button" id="day-6">
+            <h1 id="day">WED</h1>
+            <img id="icon" src="sun.png" width="64" height="64">
+            <p id="day-temp">23°C</p> 
+            <p id="night-temp">14°C</p>
         </div>
     </div>
     <script src="weather.js"></script>
