@@ -10,30 +10,42 @@
     --van-dyke: hsla(341, 12%, 26%, 1);
     --dark-cyan: hsla(180, 83%, 32%, 1);
     --caribbean-current: hsla(181, 73%, 26%, 1);
+
+    --humidity-width: 3.0rem;
 }
+/*
+    TODO
+    -divide css into bunch of different files - it's becoming really hard to read
+    -highliting progress and track on slider  on hover for mozzilla and chromium
+*/
 body{
     background-color: var(--platinum);
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    height: 95vh;
+    font-family: Arial, Helvetica, sans-serif;
 }
 /*SEARCH CONTAINER PROPERTIES*/
-#search-container{
+.search-container{
     display:flex;
     justify-content: center;
     margin: auto;
     margin-top: 3vh;
 }
-#search-container #search{
-    background-color: lightcoral;
+.search-container #search{
+    background-color: var(--light-coral);
     color: white;
     font-size: 2rem;
     border-radius: 10px;
     border: none;
     position: relative;
-    width: 30vw;
+    width: 40vw;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.45);
+    text-indent: 1.5rem;
 }
-#search-container #pin-button{
+.search-container #pin-button{
     background-color: var(--tea-rose);
     border-radius: 10px;
     position: absolute;
@@ -44,7 +56,7 @@ body{
 }
 
 
-#search-container #search-button{
+.search-container #search-button{
     margin-left: 10px;
     font-size: 1.5em;
     color: white;
@@ -55,60 +67,255 @@ body{
     padding: 0px 20px;
     box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.45);
 }
-#search-container #search-button:hover{
+.search-container #search-button:hover{
     background-color: var(--search-button-hover);
 }
-#search-container #search-button:active{
+.search-container #search-button:active{
     background-color: var(--search-button-active);
 }
 /*----------------------------------------------------------*/
 
 /*selected-weather-container*/
-#selected-weather-container{
+.selected-weather-container{
     display: flex;
     width: 100hv;
     justify-content: center;
-    border: 1px solid blue;
     margin-top: 5vh;
-}
-#humidity-sub{
     
 }
-#day-humidity-indicator{
+.selected-weather-container #humidity-sub{
+    /* border:1px solid; */
+    display:grid;
+    justify-content: right;
+    align-items: center;
+    margin-right: 2rem;
+}
+#day-humidity-indicator, #day-humidity-value{
+    grid-column: 1;
+    grid-row: 1;
+}
+.selected-weather-container #day-humidity-indicator{
+    
     -webkit-appearance: none;
     appearance: none;
     background: transparent;
-   
+    height: 90%;
+    /* width: 3.8rem; */
     
+    /* box-shadow: 5px 5px 0px 4px rgba(0, 0, 0, 50%); */
     
 }
 #day-humidity-indicator::-webkit-slider-runnable-track{
     background-color: var(--light-coral);
     border:none;
+    width: var(--humidity-width);
+    
 }
 #day-humidity-indicator::-webkit-slider-thumb{
     background-color: var(--humidity-indicator);
     border:none;
+    width: var(--humidity-width);
 }
 #day-humidity-indicator::-moz-range-track{
     background-color: var(--light-coral);
-    width: 5rem;
+    width: var(--humidity-width);
     border-radius: 5px;
     border:none;
+    box-shadow: 5px 5px 4px 3px rgba(0, 0, 0, 50%);
 }
+
+
 #day-humidity-indicator::-moz-range-thumb{
     background-color: var(--humidity-indicator);
-    width:5rem;
-    height: 0.1rem;
+    width: var(--humidity-width);
+    height: 0rem;
     border:none;
+    appearance: none;
 }
 #day-humidity-indicator::-moz-range-progress{
-    width: 5rem;
+    width: var(--humidity-width);
     background-color: var(--humidity-indicator);
+    border-radius: 5px;
 }
-#main-card-sub{
-    border: 1px solid;
+
+#day-humidity-value{
+    font-size: 1.5rem;
+    position:relative;
+    justify-content: center;
+    color: white;
 }
-#details-sub{
-    border: 1px solid;
+#humidity-sub:hover #day-humidity-indicator::-moz-range-track{
+    background-color: var(--search-button-active);
+}
+#humidity-sub:hover #day-humidity-indicator::-moz-range-progress{
+    background-color:hsla(219,61%,80%, 1); 
+}
+
+/*MAIN CARD*/
+.main-card-sub{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    background-color: var(--light-coral);
+    width: 30%;
+    height: 25rem;
+    /* width: 40vw;
+    height: 50vh; */
+    border-radius: 10px;
+    
+    box-shadow: 5px 5px 4px 3px rgba(0, 0, 0, 42%);
+    /* border: 1px solid; */
+    transition: background-color 0.3s ease-out;
+    padding: 1px;
+  
+}
+.main-card-sub:hover{
+    background-color: var(--search-button-active);
+}
+.main-card-sub h1{
+    /* font-size: clamp(2vw, 4vw, 2.5vw);  */
+    font-size: 5rem;
+    text-align: center;   
+    color: rgb(175, 226, 80);
+    font-weight: bold;
+    margin: 0px;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-wrap: break-all;
+    /* text-shadow: 10zpx 4px 4px 0px rgba(0, 0, 0, 25%); */
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.43);
+}
+.main-card-sub #icon{
+    font-size: 3rem;
+    
+    margin: 0px;
+}
+.main-card-sub #temperature{
+    font-size: 5.5em;
+    color: rgb(175, 226, 80);
+    font-weight: bold;
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.43);
+    margin: 0px;
+}
+.main-card-sub #date{
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--caribbean-current);
+    text-shadow: 5px 5px 15px rgba(0, 0, 0, 0.43);
+    margin: 0px;
+}
+
+/*DETAILS*/
+.details-sub{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:space-evenly;
+    width: 15rem;
+    
+}
+.details-sub .details{
+    /* border: 1px solid; */
+    width: 12rem;   /*backup: 18rem, on hover 17rem*/
+    height: 5.5rem;
+    transition: width 0.3s ease;
+}
+
+.details-sub .details:hover{
+    width: 11rem;
+}
+.details{
+    display: grid;
+    align-items: center;
+    width: 100%;
+    
+}
+.details img, .details label{
+    grid-column: 1;
+    grid-row: 1;
+}
+.details img {
+    width: auto; /* Adjust image size */
+    height: 100%;
+}
+
+.details label{
+    font-size: 4rem;
+    margin-left: 6rem;
+    margin-top: 0rem;
+    color: hsl(0,0%,92%);
+}
+
+.days-weather-container{
+    display:flex;
+    justify-content: space-evenly;
+    margin-top: 7rem;
+    width: 100%;
+}
+.day-button{
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    gap: 0;
+
+    background-color: var(--light-coral);
+    border-radius: 10px;
+    width: 12vw;
+    height: 12vw;
+    padding: 0.5rem;
+    box-shadow: 4px 4px 0px 2px rgba(0, 0, 0, 0.485);
+    /* transition: width 1s ease, height 1s ease; */
+    
+}
+@keyframes hover-day{
+    
+}
+.day-button:hover{
+    animation: hover-day 0.5s ease-out forwards;
+    background-color: hsla(0, 60%, 80%, 1);   
+}
+.active-button{
+    border: 4px solid rgb(0, 0, 0);
+    background-color: hsla(0, 60%, 80%, 1);   
+
+}
+
+.day-button h1{
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    text-align: center;
+    font-size: 3.5rem;
+    color: hsl(0, 0%, 93%);
+    text-shadow: 5px 5px 10px rgba(0, 0, 0, 0.43);
+    margin:0;
+}
+.day-button img{
+    grid-column: 1 / span 2;
+    grid-row: 2;
+    justify-self: center;
+    align-self: center;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    margin: 0;
+    
+    
+}
+.day-button #day-temp{
+    grid-column: 1;
+    grid-row: 3;
+    font-size: 2rem;
+    text-align: right;
+    margin: 0;
+    margin-right: 5px;
+    color: red;
+}
+.day-button #night-temp{
+    grid-column: 2;
+    grid-row: 3;
+    font-size: 2rem;
+    text-align: left;
+    margin: 0;
+    color:blue;
 }
