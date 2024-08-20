@@ -1,4 +1,8 @@
-const API_KEY = "d8de851471973994df475bd16d90961f"
+//To make it work just log in to https://openweathermap.org/ wait until your API key is generated and paste it in the 5th line
+//disclaimer: works only on FIREFOX. For example on OperaGX it's just complete blob.
+//It's not laziness, just the purpose of the project was to provide functional app that works fine with API, not to master it in every aspect, especially design.  
+//Don't mind that everything is in one .css and .js file - we've all been there.
+const API_KEY = "your api key";
 const searchForm = document.querySelector(".search-container");
 const cityInput = document.querySelector("#search");
 const localizeButton = document.querySelector("#pin-button");
@@ -24,21 +28,21 @@ const weatherSprites = [
     "./sprites/cloudy.png"
 ];
 humidityIndicator.disabled = true;
+
 let currentDayID = 0;
 let globalResultsCopy; //Oh please, it's terrible and bone chilling but I want to finish this project whatever sacrifice it takes.
 searchForm.addEventListener("submit", async event=>{
     event.preventDefault();
-
+    resetOtherDaysButtonsHighlight();
     const city = cityInput.value;
     cityInput.value = "";
     if(city){
         try{
             const coords = await getCoordinatesFromCity(city);
-            console.log(coords);
             const [
                 {lat, lon, name}
             ] = coords;
-            console.log(`lokalizacja: ${lat}, ${lon} for city ${name}`);
+            
             const weatherData = await getWeatherData(lat, lon);
             displayWeatherInfo(weatherData);
         }catch(error){
@@ -57,6 +61,11 @@ otherDaysButtons.forEach(button =>{
         updateMainCard(globalResultsCopy);
     })
 })
+function resetOtherDaysButtonsHighlight(){
+    currentDayID = 0;
+    otherDaysButtons.forEach(elem => elem.classList.remove("active-button"));
+    otherDaysButtons[0].classList.add("active-button");
+}
 async function getCoordinatesFromCity(city){
     const apiURL = `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=1&appid=${API_KEY}`;
     const response = await fetch(apiURL);
@@ -78,7 +87,6 @@ async function getWeatherData(lat, lon){
    
 }
 function displayWeatherInfo(data){
-    console.log(data);
     const cityName = data.city.name;
     const citySunrise = data.city.sunrise;
     const citySunset = data.city.sunset;
@@ -98,7 +106,6 @@ function displayWeatherInfo(data){
         speed
     })).filter((_, index) => index % 8 === 0).slice(0,5);
 
-    console.log(results);
     globalResultsCopy = results;
 
     instructionMessage.style.display = "none";
@@ -131,7 +138,6 @@ function updateMainCard(results){
         case (id === 801): weatherIconPath = weatherSprites[6];break;
         case (id > 801): weatherIconPath = weatherSprites[7];break;
     }
-    console.log(` icon path: ${weatherIconPath}`);
     selectedDayCard.children[1].src = weatherIconPath;
 
         // c) temperature
@@ -159,11 +165,10 @@ function updateMainCard(results){
     detailsCards[3].children[1].textContent = `${(results[currentDayID].speed * 3.6).toFixed(1)} km/h`;
 
 
-    console.log(otherDaysCointainer);
 }
 function updateOtherDays(results){
-    //Man free OpenWeather actually sucks because It update every 3 hours and always returns 40 values, the previous hours dissappear 
-    //so it's hard to calculate average temperature or else, if user logs in at 23:50 he will get the 21:00 temperature
+    //Man, free OpenWeather actually sucks because It update every 3 hours and always returns 40 values, the previous hours dissappear 
+    //so it's hard to calculate average temperature or else, if user logs in at 23:50 he will get the 21:00 temperature.
     otherDaysButtons.forEach((button, index)=> {
         //display day
         const currentDate = new Date();
@@ -184,11 +189,8 @@ function updateOtherDays(results){
             case (id > 801): button.children[1].src = weatherSprites[7];break;
          }
 
+         //temperature
         button.children[2].textContent = `${(results[index].temp-273).toFixed(0)}°C`;
-        //temperature
-        console.log(button);
-
-        
     })
 }
 
@@ -208,6 +210,7 @@ localizeButton.addEventListener("click", ()=>{
 async function successCallback(position){
     const latitude = position.coords.latitude;
     const longitude = position.coords.longitude;
+    resetOtherDaysButtonsHighlight();
     if(latitude && longitude){
         try{
             cityInput.value = "";
@@ -217,7 +220,6 @@ async function successCallback(position){
             displayError(error);
         }
     }
-    console.log(`Lat: ${latitude}, Long: ${longitude}`);
 }
 function errorCallback(error){
     switch(error.code) {
