@@ -1,6 +1,6 @@
 # Weather-App
-## Just a regular weather app that uses ```https://openweathermap.org/``` API.
-## Inspired by awesome JS tutorial by **[BroCode](```https://www.youtube.com/watch?v=lfmg-EJ8gm4&t=40904s```)**.  
+## Just a regular weather app that uses [OpenWeather API](https://openweathermap.org/).
+## Inspired by awesome JS tutorial by **[BroCode](https://www.youtube.com/watch?v=lfmg-EJ8gm4&t=40904s)**.  
 ### Functionalities:
  - Connects with API and provides weather forecast for the 5 days (minor free plan API disadvantage) for:
      - any city by typing it in
